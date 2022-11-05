@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Genius</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Modak&family=Nunito:wght@500;700&display=swap" rel="stylesheet" type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <audio id="clip1">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></source>
+  </audio>
+  <audio id="clip2">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></source>
+  </audio>
+  <audio id="clip3">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></source>
+  </audio>
+  <audio id="clip4">
+  	<source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></source>
+  </audio>
+</head>
+
+<body>
+  <div id="outer-circle">
+    <div id="topleft"></div>
+    <div id="topright"></div>
+    <div id="bottomleft"></div>
+    <div id="bottomright"></div>
+    <div id="inner-circle">
+      <div id="title" class="font-effect-emboss">Genius</div>
+      <div id="switches">
+        <div id="turn"></div>
+        <button class="button" id="start"></button>
+        <button class="buttonStrict" id="strictbutton"></button>
+        <input type="checkbox" class="toggle" id="strict">
+        
+      <div id="strictStat"></div>
+      </div>
+      <div class="text1">
+        <span>LIGAR</span><span>STRICT</span>
+      </div>
+    <div id="a">
+      <label class="switch">
+          <input type="checkbox" class="toggle" id="on">
+          <span class="slider"></span>
+          </label>
+    </div>
+  </div>
+  <script  src="js/index.js"></script>
+
+</body>
+</html>
