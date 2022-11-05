@@ -1,4 +1,4 @@
-// variaveis para jogabilidade
+// **** VARIAVEIS - FUNCIONAMENTO ****
 let order = [];
 let playerOrder = [];
 let flash;
@@ -11,10 +11,10 @@ let noise = true;
 let on = false;
 let win;
 
-//seletor - contador
+// **** SELETOR - CONTADOR ****
 const turnCounter = document.querySelector("#turn");
 
-//seletores - clicáveis
+// **** SELETOR - CLICÁVEIS ****
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
 const bottomLeft = document.querySelector("#bottomleft");
@@ -24,7 +24,7 @@ const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 const spanButton = document.querySelector("#spanButton");
 
-// funções - clicáveis
+// **** FUNÇÕES - BOTOES NÃO JOGÁVEIS ****
 // 1 - #strict
 strictButton.addEventListener('change', (event) =>{
       if(strictButton.checked && onButton.checked){
@@ -60,8 +60,7 @@ startButton.addEventListener('click', (event) => {
   
 })
 
-// funções - jogabilidade
-
+// **** FUNÇÕES - JOGABILIDADE ****
 // funcão - iniciar o jogo
 function play(){
   /* retificando que as varíaveis iniciem nulas para que o jogo reinicie sem embate de informações, 
@@ -88,7 +87,7 @@ function play(){
   intervalId = setInterval(gameTurn, 800);
 }
 
-// função - definindo se o turno será do computador ou do usuário
+// *** FUNÇÃO - definindo se o turno será do computador ou do usuário
 function gameTurn(){
   on = false;
   
@@ -115,7 +114,7 @@ function gameTurn(){
   }
 }
 
-//definindo a cor da luz e o audio pertencente a cada botão colorido
+//Definindo a cor da luz e o audio pertencente a cada botão colorido
 function one(){
   if(noise){
     let audio = document.getElementById("clip1");
@@ -152,7 +151,7 @@ function four(){
   bottomRight.style.backgroundColor = "lightskyblue";
 }
 
-//redefinindo a cor da botão para o padrão
+//Redefinindo a cor da botão para o padrão
 function clearColor() {
   topLeft.style.backgroundColor = "darkgreen";
   topRight.style.backgroundColor = "darkred";
@@ -160,7 +159,7 @@ function clearColor() {
   bottomRight.style.backgroundColor = "darkblue"; 
 }
 
-//redefinindo a cor da botão para a cor da 'luz'
+//Redefinindo a cor da botão para a cor da 'luz'
 function flashColor() {
   topLeft.style.backgroundColor = "lightgreen";
   topRight.style.backgroundColor = "tomato";
@@ -169,7 +168,7 @@ function flashColor() {
 }
 
 
-// botões coloridos - eventListener
+//Botões coloridos - Função OnClick
 topLeft.addEventListener('click', (event) =>{
   if(on){
     playerOrder.push(1);
@@ -222,10 +221,10 @@ bottomRight.addEventListener('click', (event) =>{
   }
 })
 
-// funções - pontuação
+// FUNÇÕES - pontuação
 function check(){
   // se o usuário clicar na opção errada
-  if(playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
+  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
     good = false;
   
   //se o usuário acertar tudo sem erros
@@ -233,13 +232,16 @@ function check(){
     winGame();
   }
   
-  if(good == false){
+  if (good == false){
     flashColor();
     turnCounter.innerHTML = "ERROU!";
     setTimeout(() => {
       turnCounter.innerHTML = turn;
       clearColor();
-
+      
+      /*Se o modo strict tiver ativado, se o usuário erra o jogo reinicia com uma nova sequência,
+      caso contrário, a pontução se mantem e o usuário pode jogar novamente a rodada que 
+      errou anteriormente*/
       if(strict) {
         play();
       } else {
@@ -253,6 +255,7 @@ function check(){
     
     noise = false;
   }
+      
   // se o usuário clicar na opção correta, sem que o turno seja o último
   if(turn == playerOrder.length && good && !win){
     turn++;
